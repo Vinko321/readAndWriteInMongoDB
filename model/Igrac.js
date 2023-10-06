@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 let igracSchema = mongoose.Schema({
     punoIme: {type: String, unique: true, required: true},
     pozicija: {type: String, required: true},
@@ -6,4 +7,4 @@ let igracSchema = mongoose.Schema({
     visina:{type: Number}
 });
 
-module.exports = mongoose.model('Igrac', igracSchema, 'Igraci');
+module.exports = mongoose.model("Igrac", igracSchema,  "Igraci");
