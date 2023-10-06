@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
-const cureNajmladjeRouter = require('./routes/cureNajmladje');
+const teamsRouter = require('./routes/teams');
 const igracRouter = require('./routes/igrac');
 /**
  * dodjeljivanje puta statičkih datoteka (css, js style, images..)
@@ -27,7 +27,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
  */
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
-app.use('/cureNajmladje', cureNajmladjeRouter);
+app.use('/teams', teamsRouter);
 app.use('/igrac', igracRouter);
 
 
