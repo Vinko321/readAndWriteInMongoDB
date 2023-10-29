@@ -23,6 +23,63 @@
     $(function(){
         $('.selectpicker').selectpicker();
     });
+
+
+    function provjeriSliku (image) {
+
+        const preview = document.getElementById("preview");
+        const file = document.querySelector("input[type=file]").files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener(
+            "load",
+            () => {
+                // convert image file to base64 string
+                preview.src = reader.result;
+                preview.onload = function() {
+                    if (this.naturalWidth < 400){
+                        alert("Slika je premala");
+                        preview.src = "images/igraci/NoviIgrac/NoviIgrac.webp";
+                        clearFileInput("ImgInp")
+                        return
+                    }
+                    if (this.naturalWidth > this.naturalHeight){
+                        alert("Slika mora biti okomitog usmjerenja (portret)");
+                        preview.src = "images/igraci/NoviIgrac/NoviIgrac.webp";
+                        clearFileInput("ImgInp")
+                    }
+                    if (this.naturalWidth/this.naturalHeight > 0.8){
+                        alert("Nije dobar omjer širine i visine. Slika mora biti višlja.");
+                        preview.src = "images/igraci/NoviIgrac/NoviIgrac.webp";
+                        clearFileInput("ImgInp")
+                    }
+                };
+            },
+            false,
+        );
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function clearFileInput(id)
+    {
+        let oldInput = document.getElementById(id);
+        let newInput = document.createElement("input");
+
+        newInput.type = "file";
+        newInput.id = oldInput.id;
+        newInput.name = oldInput.name;
+        newInput.className = oldInput.className;
+        newInput.style.cssText = oldInput.style.cssText;
+        newInput.onchange = oldInput.onchange
+        newInput.accept = oldInput.accept
+        // TODO: copy any other relevant attributes
+
+        oldInput.parentNode.replaceChild(newInput, oldInput);
+    }
+
 </script>
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>

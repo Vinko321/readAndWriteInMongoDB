@@ -1,34 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>OK Matulji</title>
-    <%- include ('../partials/head.ejs') %>
-</head>
-<body>
-<div id="home">
-    <!-- ##### Header Area Start ##### -->
-    <%- include ('../partials/header.ejs') %>
 
-</div>
-<!-- ##### home End ##### -->
-<section id="contact">
+
+ <% if(id==="NoviIgrac"){ %>
+ <div id="single-portfolio">
+     <div id="portfolio-details" >
+         <section id="portfolio">
+
+             <div class="row">
+                 <div class="heading text-center col-sm-10 col-sm-offset-1 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                     <a class="close-folio-item" href="#"><i class="fa fa-times"></i></a>
+<div id="contact">
     <div id="contact-us" class="parallax">
-        <div class="container">
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2>Unesite novog igrača</h2>
-                    <p>Popunite sva polja</p>
+                    <h2>Unesite novog igrača za uzrast "<%= uzrast%>"</h2>
+                    <p>Polja sa zvijezdicom su obavezna</p>
                 </div>
             </div>
-            <form id="frmNewPlayer" name="frmNewPlayer" action="/igrac" method="post">
+            <form id="frmNewPlayer" name="frmNewPlayer" action="/igrac" method="post" enctype="multipart/form-data" >
                 <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-sm-offset-1">
 
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="form-group">
+                                        <img id="preview" src="images/igraci/NoviIgrac/NoviIgrac.webp" alt="Image preview" />
+                                        <label for="ImgInp" class="custom-file-upload required">
+                                            <i class="fa fa-cloud-upload"></i> Učitaj Sliku
+                                        </label>
+                                        <input type="file" name="image" id="ImgInp" onchange="provjeriSliku(this)" accept="image/*"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="form-group">
+                                        <input  type="text" name="punoIme" id="punoIme" placeholder="Puno Ime" class="form-control" required />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input  type="text" name="punoIme" id="punoIme" placeholder="Puno Ime" class="form-control" required />
+                                        <input type="text" name="uzrast" id="uzrast" value="<%= uzrast%>" placeholder="Uzrast" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -37,37 +51,234 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                                <div class="col-sm-6">
+                            <div class="row wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input type="text" name="uzrast" id="uzrast" placeholder="Uzrast" class="form-control" required />
+                                        <input type="text" name="mjesto" id="mjesto" placeholder="Mjesto" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" name="visina" id="visina" placeholder="Visina" class="form-control" required/>
+                                        <input type="text" name="ulica" id="ulica" placeholder="Ulica" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" name="kucniBr" id="kucniBr" placeholder="Kć.Br." class="form-control" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="telefon" id="telefon" placeholder="Br.Telefona" class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" placeholder="Email" class="form-control"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" name="visina" id="visina" placeholder="Visina" class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <input type="text" name="exKlub1" id="exKlub1" placeholder="Ex.Klub 1" class="form-control"  />
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <input type="text" name="exKlub2" id="exKlub2" placeholder="Ex.Klub 2" class="form-control"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="uspjesi1" id="uspjesi1" placeholder="Najbolje osvojeno mjesto" class="form-control"  />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="uspjesi2" id="uspjesi2" placeholder="Drugo najbolje osvojeno mjesto" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-9 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <textarea name="opis" id="opis" placeholder="O igraču" class="form-control" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <button  type="submit" id="btnSubmit" name="submitNew" class="<%= cssBtn%>" >Pošalji</button>
+                                <button  type="submit" id="btnSubmit" name="submitNew" class="btn-submit" >Pošalji</button>
                             </div>
-                            <div class="form_status"><%= poruka%></div>
+
                         </div>
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-</section><!--/#contact-->
 
-<%- include ('../partials/footer.ejs') %>
-<script>
-    function submitForm() {
-        document.frmNewPlayer.submit();
-        document.getElementById("btnSubmit").disabled = true;
-    }
-</script>
-</body>
-</html>
+    </div>
+</div><!--/#contact-->
+                 </div>
+             </div>
+         </section><!--/#portfolio-->
+     </div>
+ </div>
+<% } else{ %>
+                     <div id="single-portfolio">
+                         <div id="portfolio-details" >
+                             <section id="portfolio">
+
+                                 <div class="row">
+                                     <div class="heading text-center col-sm-10 col-sm-offset-1 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                         <a class="close-folio-item" href="#"><i class="fa fa-times"></i></a>
+                            <div id="contact">
+                                <div id="contact-us" class="parallax">
+                                    <div class="row">
+                                        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                            <h2>Ovdje možete napraviti izmijene u podacima igrača <strong><%= igrac.punoIme%></strong></h2>
+                                        </div>
+                                    </div>
+                                    <form id="frmNewPlayer" name="frmNewPlayer" action="/igrac?action=update" method="post" enctype="multipart/form-data" >
+                                        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                                            <div class="row">
+                                                <div class="col-sm-10 col-sm-offset-1">
+
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <div class="form-group">
+                                                                <img id="preview" src="images/igraci/<%= igrac.id%>/400px/00.webp" alt="Image preview" />
+                                                                <label for="ImgInp" class="custom-file-upload">
+                                                                    <i class="fa fa-cloud-upload"></i> Promijeni Sliku
+                                                                </label>
+                                                                <input type="file" name="image" id="ImgInp" onchange="provjeriSliku(this)" accept="image/*"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <div class="form-group">
+                                                                <label for="punoIme" class="form-label required">Puno Ime</label>
+                                                                <input  type="text" name="punoIme" id="punoIme" value="<%= igrac.punoIme%>" placeholder="Puno Ime" class="form-control" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="uzrast" class="form-label required">Uzrast</label>
+                                                                <input type="text" name="uzrast" id="uzrast" value="<%= igrac.uzrast%>" placeholder="Uzrast" class="form-control" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="pozicija" class="form-label required">Pozicija</label>
+                                                                <input type="text" name="pozicija" id="pozicija" value="<%= igrac.pozicija%>" placeholder="Pozicija" class="form-control" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="mjesto" class="form-label required">Mjesto</label>
+                                                                <input type="text" name="mjesto" id="mjesto" value="<%= igrac.kontaktInfo.adresa.mjesto%>" placeholder="Mjesto" class="form-control" required/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="ulica" class="form-label required">Ulica</label>
+                                                                <input type="text" name="ulica" id="ulica" value="<%= igrac.kontaktInfo.adresa.ulica%>" placeholder="Ulica" class="form-control" required/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group">
+                                                                <label for="kucniBr" class="form-label required">Kc.Br.</label>
+                                                                <input type="text" name="kucniBr" id="kucniBr" value="<%= igrac.kontaktInfo.adresa.br%>" placeholder="Kć.Br." class="form-control" required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="telefon" class="form-label">Telefon</label>
+                                                                <input type="text" name="telefon" id="telefon" value="<%= igrac.kontaktInfo.telefon%>" placeholder="Br.Telefona" class="form-control" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="email" class="form-label">Email</label>
+                                                                <input type="email" name="email" id="email" value="<%= igrac.kontaktInfo.email%>" placeholder="Email" class="form-control"  />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group">
+                                                                <label for="visina" class="form-label required">Visina</label>
+                                                                <input type="text" name="visina" id="visina" value="<%= igrac.oIgracu.visina%>" placeholder="Visina" class="form-control" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="form-group">
+                                                                <label for="exKlub1" class="form-label">Ex klub 1</label>
+                                                                <input type="text" name="exKlub1" id="exKlub1" value="<%= igrac.oIgracu.exKlubovi[0]%>" placeholder="Ex.Klub 1" class="form-control"  />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="form-group">
+                                                                <label for="exKlub2" class="form-label">Ex klub 2</label>
+                                                                <input type="text" name="exKlub2" id="exKlub2" value="<%= igrac.oIgracu.exKlubovi[1]%>" placeholder="Ex.Klub 2" class="form-control"  />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="uspjesi1" class="form-label">Najbolji uspjeh</label>
+                                                                <input type="text" name="uspjesi1" id="uspjesi1" value="<%= igrac.oIgracu.uspjesi[0]%>" placeholder="Najbolje osvojeno mjesto" class="form-control"  />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="uspjesi2" class="form-label">Najbolji uspjeh br2 :)</label>
+                                                                <input type="text" name="uspjesi2" id="uspjesi2" value="<%= igrac.oIgracu.uspjesi[1]%>" placeholder="Drugo najbolje osvojeno mjesto" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                        <div class="col-sm-9 col-sm-offset-1">
+                                                            <div class="form-group">
+                                                                <label for="opis" class="form-label">O igraču</label>
+                                                                <textarea name="opis" id="opis" placeholder="O igraču" class="form-control" rows="4"><%= igrac.oIgracu.opis%></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <button  type="submit" id="btnSubmit" name="submitNew" class="btn-submit" >Pošalji</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div><!--/#contact-->
+                                     </div>
+                                 </div>
+
+
+                             </section><!--/#portfolio-->
+                         </div>
+                     </div>
+<% } %>

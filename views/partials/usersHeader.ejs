@@ -25,7 +25,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="southNav">
                     <!-- Logo -->
-                    <a class="nav-brand" href="#home"><img src="images/logo.webp" alt=""></a> <!-- change Language start -->
+                    <a class="nav-brand" href="#home"><img src="images/logo.png" alt=""></a> <!-- change Language start -->
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -41,20 +41,33 @@
                         </div>
 
                         <!-- Nav Start -->
-                        <div class="classynav">
+                        <div class="classynav scroll navbar-collapse">
                             <ul>
-                                <li class="scroll active"><a href="#team1">Seniori</a></li>
-                                <li class="scroll"><a href="#team2">Seniorke</a></li>
-                                <li class="scroll"><a href="#team3">Mladje</a></li>
-                                <li class="scroll"><a href="#team4">Najmladje</a></li>
-
-                                <li class="scroll"><a href="#team">Tim</a></li>
-                                <li class="scroll"><a href="#location">Location</a></li>
-                                <li class="scroll"><a href="#contact">Contact</a></li>
+                                <li id="linkKorisnici" class="scroll"><a href="#team">Ekipe</a>
+                                    <ul id="dpdMeniEkipa" class="dropdown">
+                                        <li><a href='#seniorke'>Seniorke</a></li>
+                                        <li><a href='#mladje'>Mlađe</a></li>
+                                        <li><a href='#najmladje'>Najmlađe</a></li>
+                                    </ul>
+                                </li>
+                                <li class="scroll"><a href="utakmice.ejs">Utakmice</a>
+                                    <ul id="dpdUtakmice" class="dropdown">
+                                        <li><a href="utakmice.ejs#Raspored">Raspored</a></li>
+                                        <li><a href="utakmice.ejs#Rezultati">Rezultati</a></li>
+                                    </ul>
+                                </li>
+                                <li class="scroll"><a href="novosti.ejs">Novosti</a>
+                                    <ul id="dpdMeniNovosti" class="dropdown">
+                                        <li><a href="novosti.ejs#NoviClanak">Novi Članak</a></li>
+                                    </ul>
+                                </li>
+                                <li id="linkAdministratori" class="scroll"><a href="administratori.ejs">Administratori</a>
+                                    <ul id="meniAdmin" class="dropdown">
+                                        <li><a href="administratori.ejs#noviAdmin">Novi Admin</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-
                         </div>
-
                         <!-- Nav End -->
 
                     </div>

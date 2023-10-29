@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OK Matulji - korisničke stranice</title>
+    <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+<div id="home">
+    <!-- ##### Header Area Start ##### -->
+    <%- include ('../partials/usersHeader.ejs') %>
+
+</div>
+<!-- ##### home End ##### -->
+
+<!--##### sekcija stvaranje nove i mijenjanje postojeće igračice #####-->
+<section id="team" class="zatamnjenaPozadina">
+    <div class="container razmakniOdVrha">
+        <% for (var j = 0; j < uzrast.length; j++) { %>
+        <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+                <h2 id="<%= uzrast[j]%>" style="color:#fff">Ekipa <%= uzrast[j]%></h2>
+                <p>Ovo je administratorski dio za dodavanje novog Igrača i uređivanje informacija o postojećem Igraču ekipe <%= uzrast[j]%></p>
+            </div>
+        </div>
+        <div class="team-members">
+            <div id="divKorisnici" class="row">
+                <!--  Klik za upisivanje novog igrača -->
+                <div class="col-sm-3">
+                    <h2>Novi Igrač</h2>
+                    <div class="team-member-korisnici" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <div class="member-image">
+                            <a class="folio-read-more<%= j%>" href="#" data-single_url="igrac?id=NoviIgrac&uzrast=<%= uzrast[j]%>">
+                                <img class="img-responsive" width="300" height="400" src="images/igraci/NoviIgrac/NoviIgrac.webp" alt="Novi Igrač"/>
+                            </a>
+                            <span class="textOverImage">Za <%= uzrast[j] %></span>
+                        </div>
+                    </div>
+                </div>
+                <!--  Klik za uređivanje info postojećih korisnika -->
+                <% for (var i = 0; i < igraci.length; i++) { %>
+                <%if (igraci[i].uzrast == uzrast[j]) {%>
+                <div class="col-sm-3">
+                    <h2><%= igraci[i].pozicija%></h2>
+                    <div class="team-member-korisnici" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <div class="member-image">
+                            <a class="folio-read-more<%= j%>" href="#" data-single_url="igrac?id=<%= igraci[i].id %>">
+                            <img class="img-responsive" width="300" height="400" src="images/igraci/<%= igraci[i].id;%>/400px/00.webp" alt="<%= igraci[i].punoIme%>"/>
+                            </a>
+                            <span class="textOverImage"><%= igraci[i].punoIme %></span>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+
+            </div>
+        </div>
+            <div id="portfolio-single-wrap<%= j%>">
+                <div id="portfolio-single<%= j%>">
+                </div>
+            </div><!-- /#portfolio-single-wrap -->
+        <% } %>
+    </div>
+</section><!--/#services-->
+
+<%- include ('../partials/footer.ejs') %>
+
+</body>
+</html>
