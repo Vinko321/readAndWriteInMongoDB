@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><%= title %></title>
-    <% include ../partials/stylesheet %>
+    <title>OK Matulji</title>
+    <%- include ('partials/head.ejs') %>
 </head>
 <body>
-<% include ../partials/header %>
 
-<div class="container">
-    <% if (message.length > 0) { %>
-        <div class="alert alert-warning alert-dismissible
-                   fade in" role="alert">
-            <button type="button" class="close" data-dismiss=
-            "alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Ohps!</strong> <%= message %>.
+<!-- ##### home End ##### -->
+<section id="contact">
+    <div id="contact-us" class="parallax">
+        <div class="container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2>Stranica Za Prijavu u korisničke stranice</h2>
+                    <p>Prijavom biti će vam omogućeno mijenjati podatke ovisno o dodjeljenoj vam razini</p>
+                </div>
+            </div>
+            <form id="login-form" name="signup-form" action="/login" method="post">
+                <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <span  id="poruka" style="color: darkred"><strong><%= poruka%></strong></span><br/><br/>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="userName" id="userName" placeholder="User Name" class="form-control" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" placeholder="Password" class="form-control" required/>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <button  type="submit" id="loginDetails" name="loginDetails" class="btn-submit">Pošalji</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    <% } %>
-    <form class="form-signin" action="/login" method="post">
-        <h2 class="form-signin-heading">Welcome sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="email" name="email" class="form-
-              control" placeholder="Email address" required="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="password" name="password"
-               class="form-control" placeholder="Password" required="">
-        <button class="btn btn-lg btn-primary btn-block"
-                type="submit">Sign in</button>
-        <br>
-        <p>Don't have an account? <a href="/signup">Signup</a>
-            ,it's free.</p>
-    </form>
-</div>
+    </div>
+</section><!--/#contact-->
 
-<% include ../partials/footer %>
-<% include ../partials/javascript %>
+<%- include ('partials/footer.ejs') %>
 </body>
 </html>

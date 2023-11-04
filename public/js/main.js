@@ -107,7 +107,7 @@ jQuery(function($) {
 		});
 	});
 
-	// Service Single View
+	// Service Single View0
 	$('#team').on('click','.folio-read-more0',function(event){
 		event.preventDefault();
 		var link = $(this).data('single_url');
@@ -115,13 +115,101 @@ jQuery(function($) {
 			parts = full_url.split("#"),
 			trgt = parts[1],
 			target_top = $("#"+trgt).offset().top;
-
 		$('html, body').animate({scrollTop:target_top}, 600);
 		$('#portfolio-single0').slideUp(500, function(){
 			$(this).load(link,function(){
 				$(this).slideDown(500);
 			});
 		});
+	});
+	// Close team Single View0
+	$('#portfolio-single-wrap0').on('click', '.close-folio-item',function(event) {
+		event.preventDefault();
+		var full_url = '#team',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_offset = $("#"+trgt).offset(),
+			target_top = target_offset.top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$("#portfolio-single0").slideUp(600);
+	});
+	// Service Single View1
+	$('#team').on('click','.folio-read-more1',function(event){
+		event.preventDefault();
+		var link = $(this).data('single_url');
+		var full_url = '#portfolio-single-wrap1',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_top = $("#"+trgt).offset().top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$('#portfolio-single1').slideUp(500, function(){
+			$(this).load(link,function(){
+				$(this).slideDown(500);
+			});
+		});
+	});
+	// Close team Single View1
+	$('#portfolio-single-wrap1').on('click', '.close-folio-item',function(event) {
+		event.preventDefault();
+		var full_url = '#team',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_offset = $("#"+trgt).offset(),
+			target_top = target_offset.top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$("#portfolio-single1").slideUp(600);
+	});
+	// Service Single View2
+	$('#team').on('click','.folio-read-more2',function(event){
+		event.preventDefault();
+		var link = $(this).data('single_url');
+		var full_url = '#portfolio-single-wrap2',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_top = $("#"+trgt).offset().top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$('#portfolio-single2').slideUp(500, function(){
+			$(this).load(link,function(){
+				$(this).slideDown(500);
+			});
+		});
+	});
+	// Close team Single View2
+	$('#portfolio-single-wrap2').on('click', '.close-folio-item',function(event) {
+		event.preventDefault();
+		var full_url = '#team',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_offset = $("#"+trgt).offset(),
+			target_top = target_offset.top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$("#portfolio-single2").slideUp(600);
+	});
+	// Service Single View3
+	$('#team').on('click','.folio-read-more3',function(event){
+		event.preventDefault();
+		var link = $(this).data('single_url');
+		var full_url = '#portfolio-single-wrap3',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_top = $("#"+trgt).offset().top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$('#portfolio-single3').slideUp(500, function(){
+			$(this).load(link,function(){
+				$(this).slideDown(500);
+			});
+		});
+	});
+	// Close team Single View3
+	$('#portfolio-single-wrap3').on('click', '.close-folio-item',function(event) {
+		event.preventDefault();
+		var full_url = '#team',
+			parts = full_url.split("#"),
+			trgt = parts[1],
+			target_offset = $("#"+trgt).offset(),
+			target_top = target_offset.top;
+		$('html, body').animate({scrollTop:target_top}, 600);
+		$("#portfolio-single3").slideUp(600);
 	});
 	
 	// stickyHeader Single View
@@ -185,6 +273,9 @@ jQuery(function($) {
 			form_status.html('<p class="text-success">Thank you for contact us. As early as possible  we will contact you</p>').delay(3000).fadeOut();
 		});
 	});
+
+
+
 
 	//Google Map
 	var latitude = $('#google-map').data('latitude')

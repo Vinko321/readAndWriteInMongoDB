@@ -132,6 +132,9 @@ a:hover {
   outline: none
 }
 
+.userLink{
+  opacity: 70%;
+}
 
 
 .heading {
@@ -1023,6 +1026,19 @@ textarea.form-control {
 .form-group {
     margin-bottom: 30px;
 }
+.form-group img {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 .form-group-korisnici {
     margin-bottom: 10px;
 }
@@ -1093,7 +1109,14 @@ ul.address {
 .contact-info ul li a {
   color: #fff;
 }
-
+.form-label{
+  float: left
+}
+.required::after {
+  content: ' *';
+  color: red;
+  float: left;
+}
 .btn-submit {
   display: block;
   padding: 12px;
